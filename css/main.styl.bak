@@ -1,0 +1,69 @@
+// CSS Style Guide: https://codeguide.co/#css
+
+
+$scheme = hexo-config('scheme') ? hexo-config('scheme') : 'Muse';
+
+
+// Variables Layer
+// --------------------------------------------------
+@import '_variables/base';
+@import '_variables/' + $scheme;
+for $inject_variable in hexo-config('injects.variable')
+  @import $inject_variable;
+
+// Mixins Layer
+// --------------------------------------------------
+@import '_mixins';
+for $inject_mixin in hexo-config('injects.mixin')
+  @import $inject_mixin;
+
+// Dark mode colors
+// --------------------------------------------------
+@import '_colors';
+
+// Common Layer
+// --------------------------------------------------
+
+// Scaffolding
+@import '_common/scaffolding';
+
+// Layout
+@import '_common/outline';
+
+// Components
+@import '_common/components';
+
+
+// Schemes Layer
+// --------------------------------------------------
+@import '_schemes/' + $scheme;
+
+
+// Custom Layer
+// --------------------------------------------------
+for $inject_style in hexo-config('injects.style')
+  @import $inject_style;
+
+//自定义样式
+//---------------------------------------------------
+//背景图
+body {
+  background: url(/images/background.jpg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  color: var(--text-color);
+  font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 1em;
+  line-height: 2;
+  min-height: 100%;
+  position: relative;
+  transition: padding 0.2s ease-in-out;
+}
+
+// 侧边标题栏
+.header-inner {
+  //border-radius: 20px 20px 20px 20px; //边框圆角
+  //opacity: 0.85;
+}
+
